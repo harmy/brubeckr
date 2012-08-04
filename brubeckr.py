@@ -171,6 +171,6 @@ class Brubeckr(Brubeck):
     def __init__(self, msg_conn=None, handler_tuples=None, pool=None, no_handler=None, base_handler=None,
                  template_loader=None, log_level=logging.INFO, login_url=None, db_conn=None, cookie_secret=None,
                  api_base_url=None, *args, **kwargs):
-        self.rpc_conn = kwarg.get("rpc_conn")
+        self.rpc_conn = kwargs.get("rpc_conn")
         super(Brubeckr, self).__init__(msg_conn, handler_tuples, pool, no_handler, base_handler, template_loader,
             log_level, login_url, db_conn, cookie_secret, api_base_url, *args, **kwargs)
