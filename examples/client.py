@@ -6,7 +6,7 @@ CONN.connect(('127.0.0.1', 6767))
 
 def remote_call(method_name, args):
     msg = '@api %s\0' % (
-        json.dumps({'jsonrpc': '2.0', 'method': method_name, 'id':1}))
+        json.dumps({'jsonrpc': '2.0', 'method': method_name, 'params': args, 'id':1}))
     CONN.send(msg)
 
 if __name__ == "__main__":
