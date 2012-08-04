@@ -2,3 +2,4 @@
 run/*.pid
 *.pyc
 *.db
+log/*.log
