@@ -145,7 +145,6 @@ class JsonrpcHandler(MessageHandler):
         try:
             data = self.message.data
             result = self.rpc(data)
-            print("response %s" % json.dumps(result))
         except ValueError, e:
             result = {'jsonrpc':'2.0',
                        'id':None,

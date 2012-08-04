@@ -3,3 +3,4 @@ run/*.pid
 *.pyc
 *.db
 log/*.log
+config.sqlite
