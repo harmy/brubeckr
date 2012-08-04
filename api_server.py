@@ -8,8 +8,6 @@ from brubeckr import JsonrpcHandler, JsonrpcConnection, Brubeckr
 ###
 
 # Routing config
-
-
 handler_tuples = [
     ('@api', JsonrpcHandler),
 ]
