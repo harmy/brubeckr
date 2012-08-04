@@ -1,5 +1,5 @@
 import socket
-import simplejson as json
+import ujson as json
 from base64 import b64decode
 CONN = socket.socket()
 CONN.connect(('127.0.0.1', 6767))
