@@ -1,16 +1,28 @@
+#!/usr/bin/env python
 import socket
-import ujson as json
+import json
 from base64 import b64decode
-CONN = socket.socket()
-CONN.connect(('127.0.0.1', 6767))
+import sys
 
-def remote_call(method_name, args):
+def remote_call(conn, method_name, params):
     msg = '@api %s\0' % (
-        json.dumps({'jsonrpc': '2.0', 'method': method_name, 'params': args, 'id':1}))
-    CONN.send(msg)
+        json.dumps({'jsonrpc': '2.0', 'method': method_name, 'params': params, 'id':1}))
+    conn.send(msg)
 
 if __name__ == "__main__":
-    remote_call('get_all_users', [])
-    reply = CONN.recv(1024)
-    print json.loads(b64decode(reply))
-    CONN.close()
+    if len(sys.argv) < 3:
+        print "Usage: python client.py host port [method] [params]"
+        exit(-1)
+
+    host, port = sys.argv[1], int(sys.argv[2])
+    conn = socket.socket()
+    conn.connect((host, port))
+
+    method = "_zerorpc_inspect" if len(sys.argv) == 3 else sys.argv[3]
+    params = sys.argv[4:]
+    remote_call(conn, method, params)
+
+    resdata = conn.recv(2048)
+    print json.dumps(json.loads(b64decode(resdata)), sort_keys = True, indent = 2)
+
+    conn.close()

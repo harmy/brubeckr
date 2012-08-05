@@ -136,6 +136,7 @@ class JsonrpcHandler(MessageHandler):
         client = self.application.rpc_conn
         remote_methods = client._zerorpc_inspect()["methods"]
         methods = dict(zip(remote_methods.keys(), [getattr(client, method_name) for method_name in remote_methods.keys()]))
+        methods.update({"_zerorpc_inspect": getattr(client, "_zerorpc_inspect")})
         self.rpc = JsonRpc(methods)
 
     def __call__(self):
