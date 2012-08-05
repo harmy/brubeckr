@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#encoding=utf-8
 import uuid
 import gevent
 import random
@@ -131,6 +132,12 @@ class UserService:
 
     def test(self):
         return "test!"
+
+    def hello(self, who = "world!"):
+            return "hello %s!" % who
+
+    def auth(self, key, id, ip):
+        return key == "123456"
 
 
 def main():
