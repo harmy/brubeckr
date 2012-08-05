@@ -72,9 +72,6 @@ class JsonRpc(object):
         if not isinstance(methodname, basestring):
             raise JsonRpcException(data.get('id'), INVALID_REQUEST)
 
-        if methodname.startswith('_'):
-            raise JsonRpcException(data.get('id'), METHOD_NOT_FOUND)
-
         if methodname not in self.methods:
             raise JsonRpcException(data.get('id'), METHOD_NOT_FOUND)
 
