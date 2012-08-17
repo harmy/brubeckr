@@ -2,7 +2,8 @@
 
 a jsonrpc2 handler for [brubeck][0], a socket [ZeroRPC][1] gateway, play as the bridge between [brubeck][0] and [zerorpc][1]. 
 
-<hr/>
+## Example
+
 there is a working server on my aws ec2, so feel free to check it out.
     
 ```python
